@@ -1,0 +1,138 @@
+/* ============================================================
+   Speedfaz — folha de estilos partilhada
+   Reparações residenciais · Setúbal e Tróia
+   ============================================================ */
+
+/* ---------- Fontes ---------- */
+@font-face { font-family:'Gilroy'; src:url('../fonts/gilroy-400.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Gilroy'; src:url('../fonts/gilroy-500.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:'Gilroy'; src:url('../fonts/gilroy-600.ttf') format('truetype'); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:'Gilroy'; src:url('../fonts/gilroy-700.ttf') format('truetype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Gilroy'; src:url('../fonts/gilroy-800.ttf') format('truetype'); font-weight:800; font-style:normal; font-display:swap; }
+@font-face { font-family:'Gilroy'; src:url('../fonts/gilroy-900.ttf') format('truetype'); font-weight:900; font-style:normal; font-display:swap; }
+
+/* ---------- Variáveis ---------- */
+:root{
+  --ink:#1c1b17; --ink-soft:#5c5b58; --muted:#727271; --muted-2:#9a9893;
+  --orange:#f08143; --orange-dark:#e06f30; --orange-tint:#fdeee4; --orange-border:#f7cdaf;
+  --line:#ecebe8; --surface:#f5f4f2; --green:#25D366; --green-dark:#1ebe5a; --red:#e0594a;
+}
+
+/* ---------- Reset / base ---------- */
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  background:#fff; color:var(--ink);
+  font-family:'Gilroy',-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.55; min-height:100vh;
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; }
+
+/* ---------- Animações / utilitários ---------- */
+@keyframes sfpulse{ 0%{box-shadow:0 0 0 0 rgba(37,211,102,.45);} 70%{box-shadow:0 0 0 16px rgba(37,211,102,0);} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0);} }
+@keyframes sffade{ from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
+.sf-scroll::-webkit-scrollbar{ height:8px; }
+.sf-scroll::-webkit-scrollbar-thumb{ background:#ddd9d2; border-radius:8px; }
+::selection{ background:var(--orange); color:#fff; }
+
+.sf-container{ max-width:1200px; margin:0 auto; padding:0 24px; }
+.sf-eyebrow{ color:var(--orange); font-weight:700; font-size:14px; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }
+
+/* ---------- Cabeçalho / navegação ---------- */
+.sf-header{ position:sticky; top:0; z-index:40; background:rgba(255,255,255,.92); backdrop-filter:saturate(140%) blur(10px); border-bottom:1px solid var(--line); }
+.sf-header-inner{ max-width:1200px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+.sf-logo{ display:flex; align-items:center; flex:none; }
+.sf-logo img{ height:52px; width:auto; }
+.sf-nav{ display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.sf-navlink{ position:relative; font-weight:600; font-size:15px; color:var(--ink); padding:4px 0; text-decoration:none; transition:color .15s; }
+.sf-navlink:hover{ color:var(--orange); }
+.sf-navlink.is-active::after{ content:""; position:absolute; left:0; right:0; bottom:-3px; height:2.5px; background:var(--orange); border-radius:2px; }
+.sf-cart-btn{ position:relative; display:flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:11px; border:1px solid var(--line); background:#fff; transition:border-color .15s; }
+.sf-cart-btn:hover{ border-color:var(--orange); }
+.sf-cart-count{ position:absolute; top:-7px; right:-7px; min-width:20px; height:20px; padding:0 5px; border-radius:999px; background:var(--orange); color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
+
+/* ---------- Menu dropdown (abre ao passar o rato) ---------- */
+.sf-nav-item{ position:relative; padding-bottom:16px; margin-bottom:-16px; }
+.sf-nav-item > .sf-navlink{ display:inline-flex; align-items:center; gap:5px; }
+.sf-caret{ font-size:10px; color:var(--muted); transition:transform .15s; }
+.sf-nav-item:hover .sf-caret{ transform:rotate(180deg); color:var(--orange); }
+.sf-dropdown{ position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(8px); min-width:230px; background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:0 20px 44px rgba(28,27,23,.16); padding:8px; opacity:0; visibility:hidden; transition:opacity .16s,transform .16s; z-index:50; }
+.sf-nav-item:hover .sf-dropdown{ opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+.sf-dropdown a{ display:block; padding:9px 12px; border-radius:9px; font-size:14px; font-weight:600; color:var(--ink); text-decoration:none; white-space:nowrap; transition:background .12s,color .12s; }
+.sf-dropdown a:hover{ background:var(--surface); color:var(--orange); }
+@media (max-width:760px){ .sf-dropdown{ display:none; } .sf-caret{ display:none; } .sf-nav-item{ padding-bottom:0; margin-bottom:0; } }
+
+/* ---------- Botões ---------- */
+.sf-btn{ text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:10px; font-weight:700; border-radius:12px; cursor:pointer; border:none; transition:background .15s,color .15s,box-shadow .15s; }
+.sf-btn-primary{ background:var(--orange); color:#fff; box-shadow:0 10px 24px rgba(240,129,67,.32); }
+.sf-btn-primary:hover{ background:var(--orange-dark); }
+.sf-btn-primary.sm{ font-size:14px; padding:11px 18px; box-shadow:0 6px 16px rgba(240,129,67,.28); border-radius:10px; }
+.sf-btn-primary.md{ font-size:16px; padding:16px 26px; }
+.sf-btn-primary.lg{ font-size:16px; padding:15px 24px; box-shadow:0 10px 24px rgba(240,129,67,.3); }
+.sf-btn-dark{ background:var(--ink); color:#fff; }
+.sf-btn-dark:hover{ background:#000; }
+.sf-btn-green{ background:var(--green); color:#fff; box-shadow:0 10px 24px rgba(37,211,102,.3); }
+.sf-btn-green:hover{ background:var(--green-dark); }
+.sf-btn-white{ background:#fff; color:var(--ink); box-shadow:0 14px 30px rgba(28,27,23,.22); font-size:17px; padding:17px 30px; }
+.sf-btn-white:hover{ background:var(--ink); color:#fff; }
+.sf-link-underline{ font-weight:700; color:var(--ink); border-bottom:2px solid var(--orange); padding-bottom:3px; text-decoration:none; cursor:pointer; display:inline-block; }
+.sf-link-arrow{ cursor:pointer; font-weight:700; font-size:16px; color:var(--ink); padding:16px 6px; border-bottom:2px solid transparent; transition:border-color .15s; text-decoration:none; }
+.sf-link-arrow:hover{ border-bottom:2px solid var(--orange); }
+
+/* ---------- Faixa taxa de visita ---------- */
+.sf-fee{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; background:var(--orange-tint); border:1px solid var(--orange-border); border-radius:16px; padding:20px 24px; transition:border-color .15s,box-shadow .15s; }
+a.sf-fee{ cursor:pointer; }
+a.sf-fee:hover{ border-color:var(--orange); box-shadow:0 10px 26px rgba(240,129,67,.18); }
+.sf-fee-badge{ flex:none; display:flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:12px; background:var(--orange); color:#fff; font-weight:800; font-size:17px; }
+
+/* ---------- Cartões ---------- */
+.sf-card{ background:#fff; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 2px 8px rgba(28,27,23,.04); transition:box-shadow .18s; }
+.sf-card.clickable{ cursor:pointer; }
+.sf-card.clickable:hover{ box-shadow:0 16px 34px rgba(28,27,23,.12); }
+.sf-price-pill{ flex:none; background:var(--orange-tint); color:var(--orange-dark); font-weight:700; font-size:13px; padding:6px 11px; border-radius:999px; white-space:nowrap; }
+
+/* ---------- Rodapé ---------- */
+.sf-footer{
+  background:var(--ink); color:#b7b4ad;
+  border-top:2px solid var(--orange);          /* linha fina laranja em cima */
+  border-bottom:2px solid var(--orange);       /* linha fina laranja em baixo */
+  box-shadow:0 -22px 50px -12px rgba(240,129,67,.6); /* glow laranja por cima */
+  position:relative;
+}
+.sf-footer-grid{ max-width:1200px; margin:0 auto; padding:clamp(44px,5vw,64px) 24px 28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:36px; }
+.sf-footer h4{ color:#fff; font-weight:700; font-size:15px; margin:0 0 14px; }
+.sf-footer-logo{ display:inline-block; background:#fff; padding:8px 14px; border-radius:12px; }
+.sf-footer-logo img{ height:42px; width:auto; display:block; }
+.sf-footer-links{ display:flex; flex-direction:column; gap:9px; font-size:14px; }
+.sf-footer-links a, .sf-footer-links span{ color:#b7b4ad; text-decoration:none; transition:color .15s; }
+.sf-footer-links a:hover{ color:var(--orange); }
+.sf-footer-phones{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-weight:700; }
+.sf-footer-phones .sep{ color:#5b5852; }
+.sf-footer-nav{ display:grid; grid-template-columns:repeat(2,max-content); gap:9px 28px; font-size:14px; }
+.sf-footer-nav a{ color:#b7b4ad; text-decoration:none; transition:color .15s; }
+.sf-footer-nav a:hover{ color:var(--orange); }
+.sf-footer-bottom{ border-top:1px solid #34322c; margin-top:14px; }
+.sf-footer-bottom div{ max-width:1200px; margin:0 auto; padding:20px 24px; font-size:13px; color:#7c7972; }
+
+/* ---------- WhatsApp flutuante ---------- */
+.sf-wa-float{ position:fixed; right:22px; bottom:22px; z-index:60; width:60px; height:60px; border-radius:50%; background:var(--green); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 22px rgba(37,211,102,.45); animation:sfpulse 2.6s infinite; transition:background .15s; }
+.sf-wa-float:hover{ background:var(--green-dark); }
+
+/* ---------- Modais (carrinho / detalhe / total) ---------- */
+.sf-modal-overlay{ position:fixed; inset:0; z-index:80; background:rgba(28,27,23,.55); display:flex; align-items:center; justify-content:center; padding:20px; }
+.sf-modal{ background:#fff; border-radius:20px; max-width:520px; width:100%; max-height:88vh; overflow-y:auto; box-shadow:0 30px 70px rgba(0,0,0,.35); animation:sffade .22s ease both; }
+.sf-modal.narrow{ max-width:480px; }
+.sf-modal-close{ width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:18px; color:var(--ink); }
+.sf-included{ display:flex; align-items:flex-start; gap:11px; }
+.sf-included .tick{ flex:none; width:22px; height:22px; border-radius:50%; background:#e9f9ef; color:#1ebe5a; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; margin-top:1px; }
+
+/* ---------- Carrinho: itens / relacionados ---------- */
+.sf-cart-item{ display:flex; align-items:center; gap:16px; background:#fff; border:1px solid var(--line); border-radius:16px; padding:14px 16px; cursor:pointer; box-shadow:0 2px 8px rgba(28,27,23,.04); transition:border-color .15s; }
+.sf-cart-item:hover{ border-color:var(--orange-border); }
+.sf-cart-remove{ flex:none; width:38px; height:38px; border-radius:10px; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--muted-2); font-size:18px; cursor:pointer; transition:border-color .15s,color .15s; }
+.sf-cart-remove:hover{ border-color:var(--red); color:var(--red); }
+.sf-arrow-btn{ cursor:pointer; width:38px; height:38px; border-radius:10px; border:1px solid var(--line); background:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--ink); transition:border-color .15s; }
+.sf-arrow-btn:hover{ border-color:var(--orange); }
+
+[hidden]{ display:none !important; }

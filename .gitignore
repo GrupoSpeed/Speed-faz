@@ -1,0 +1,11 @@
+# Intermediário — assets decodificados já copiados para speedfaz-static/assets/
+_extracted/
+
+# Sistema operativo / OneDrive
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+
+# Dependências (não usadas, por precaução)
+node_modules/

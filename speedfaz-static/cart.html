@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O teu carrinho | Speedfaz</title>
+<meta name="description" content="Revê os serviços escolhidos e pede tudo de uma vez no WhatsApp. Valor estimado com IVA incluído.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="cart">
+
+<div id="sf-header"></div>
+
+<main id="sf-cart-root">
+  <section style="max-width:920px;margin:0 auto;padding:clamp(36px,4vw,56px) 24px clamp(48px,5vw,80px)">
+    <h1 style="font-weight:800;font-size:clamp(30px,4vw,46px);letter-spacing:-.5px;margin:0 0 6px">O teu carrinho</h1>
+    <p style="color:#727271;font-size:16px;margin:0 0 32px">Revê os serviços escolhidos e pede tudo de uma vez no WhatsApp.</p>
+
+    <!-- ESTADO: COM ITENS -->
+    <div id="sf-cart-filled" hidden>
+      <div id="sf-cart-list" style="display:flex;flex-direction:column;gap:14px"></div>
+
+      <!-- PRODUTOS RELACIONADOS -->
+      <div id="sf-related-wrap" style="margin-top:38px" hidden>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px">
+          <h2 style="font-weight:800;font-size:20px;margin:0">Produtos relacionados</h2>
+          <div style="display:flex;gap:8px">
+            <div id="sf-rel-left" class="sf-arrow-btn">‹</div>
+            <div id="sf-rel-right" class="sf-arrow-btn">›</div>
+          </div>
+        </div>
+        <div id="sf-related-track" class="sf-scroll" style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:10px;scroll-snap-type:x mandatory"></div>
+      </div>
+
+      <!-- RODAPÉ DO CARRINHO -->
+      <div style="margin-top:34px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:#1c1b17;border-radius:18px;padding:22px 26px">
+        <div id="sf-total-toggle" style="cursor:pointer">
+          <div style="color:#b7b4ad;font-size:13px;font-weight:600">Valor total estimado</div>
+          <div style="display:flex;align-items:center;gap:9px">
+            <span id="sf-total-label" style="color:#fff;font-weight:800;font-size:30px;letter-spacing:-.5px">0,00 €</span>
+            <span style="color:#f08143;font-size:13px;font-weight:700;border-bottom:1.5px solid #f08143;padding-bottom:1px">ver detalhe</span>
+          </div>
+        </div>
+        <a id="sf-cart-wa" href="#" target="_blank" rel="noopener" class="sf-btn sf-btn-green" style="font-size:16px;padding:16px 24px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.13c-.24.68-1.42 1.32-1.95 1.36-.5.05-1.13.07-1.83-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.82-4.2-4.97-4.39-.15-.2-1.19-1.58-1.19-3.01s.75-2.13 1.02-2.43c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.02.89 2.17.07.15.12.32.02.51-.09.2-.14.32-.27.49-.14.17-.29.38-.41.51-.14.15-.28.31-.12.59.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.15.43.12.59-.07.16-.2.68-.79.86-1.06.18-.27.36-.22.59-.13.24.09 1.52.72 1.78.85.27.13.44.2.51.31.07.12.07.68-.17 1.34Z"></path></svg>
+          Pedir no WhatsApp
+        </a>
+      </div>
+      <p style="color:#9a9893;font-size:13px;margin:14px 2px 0">Valor estimado — o preço final pode variar após avaliação no local.</p>
+    </div>
+
+    <!-- ESTADO: VAZIO -->
+    <div id="sf-cart-empty" hidden style="text-align:center;background:#f5f4f2;border:1px solid #ecebe8;border-radius:20px;padding:clamp(40px,6vw,64px) 24px">
+      <div style="width:64px;height:64px;border-radius:16px;background:#fff;border:1px solid #ecebe8;display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#727271" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M2.5 3h2l2.2 11.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.2L21 7H6"></path></svg>
+      </div>
+      <h2 style="font-weight:800;font-size:24px;margin:0 0 8px">O teu carrinho está vazio</h2>
+      <p style="color:#727271;font-size:16px;margin:0 0 24px">Escolhe os serviços de que precisas e adiciona-os aqui.</p>
+      <a href="servicos.html" class="sf-btn sf-btn-primary lg">Ver serviços</a>
+    </div>
+  </section>
+</main>
+
+<div id="sf-footer"></div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

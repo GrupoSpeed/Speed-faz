@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="6aa7c6f0-ba40-40b5-8662-75481956600c"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  @font-face { font-family: 'Gilroy'; src: url("4ba6b7d8-8cbd-4e5b-83b1-1d2a641ce3e8") format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Gilroy'; src: url("59b9bee4-9f40-4f42-8ee7-9f0f5d78893a") format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Gilroy'; src: url("5a681ff2-d1d3-4ac5-9493-e75850365cf2") format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Gilroy'; src: url("61365682-2c64-40af-be4d-a741c4b010fb") format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Gilroy'; src: url("8b11ea91-dfaa-4bb2-9091-7c4f216cb0ad") format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Gilroy'; src: url("c7138a29-905a-4b91-b103-1555c9f59b05") format('truetype'); font-weight: 900; font-style: normal; font-display: swap; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #ffffff; }
+  img { display: block; max-width: 100%; }
+  @keyframes sfpulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,.45); } 70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+  @keyframes sffade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .sf-scroll::-webkit-scrollbar { height: 8px; }
+  .sf-scroll::-webkit-scrollbar-thumb { background: #ddd9d2; border-radius: 8px; }
+  ::selection { background: #f08143; color: #fff; }
+</style>
+</helmet>
+
+
+<div style="font-family:'Gilroy',-apple-system,BlinkMacSystemFont,sans-serif;color:#1c1b17;background:#ffffff;min-height:100vh;-webkit-font-smoothing:antialiased;line-height:1.55">
+
+  <header style="position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid #ecebe8">
+    <div style="max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div onclick="{{ navHome }}" style="display:flex;align-items:center;cursor:pointer;flex:none">
+        <img src="24bf169c-2d68-420d-815b-88bae42bcfd0" alt="Speedfaz — reparações residenciais" style="height:52px;width:auto;display:block">
+      </div>
+
+      <nav style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+        <div onclick="{{ navHome }}" style="position:relative;cursor:pointer;font-weight:600;font-size:15px;color:#1c1b17;padding:4px 0" style-hover="color:#f08143">Início<sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:-3px;height:2.5px;background:#f08143;border-radius:2px"></div></sc-if></div>
+        <div onclick="{{ navServicos }}" style="position:relative;cursor:pointer;font-weight:600;font-size:15px;color:#1c1b17;padding:4px 0" style-hover="color:#f08143">Serviços<sc-if value="{{ isServicos }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:-3px;height:2.5px;background:#f08143;border-radius:2px"></div></sc-if></div>
+        <div onclick="{{ navSobre }}" style="position:relative;cursor:pointer;font-weight:600;font-size:15px;color:#1c1b17;padding:4px 0" style-hover="color:#f08143">Sobre<sc-if value="{{ isSobre }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:-3px;height:2.5px;background:#f08143;border-radius:2px"></div></sc-if></div>
+        <div onclick="{{ navBlog }}" style="position:relative;cursor:pointer;font-weight:600;font-size:15px;color:#1c1b17;padding:4px 0" style-hover="color:#f08143">Blog<sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:-3px;height:2.5px;background:#f08143;border-radius:2px"></div></sc-if></div>
+        <div onclick="{{ navContacto }}" style="position:relative;cursor:pointer;font-weight:600;font-size:15px;color:#1c1b17;padding:4px 0" style-hover="color:#f08143">Contacto<sc-if value="{{ isContacto }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:0;right:0;bottom:-3px;height:2.5px;background:#f08143;border-radius:2px"></div></sc-if></div>
+        <div onclick="{{ navCart }}" title="Carrinho" style="position:relative;cursor:pointer;display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:11px;border:1px solid #ecebe8;background:#fff" style-hover="border-color:#f08143">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1c1b17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M2.5 3h2l2.2 11.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.2L21 7H6"></path></svg>
+          <sc-if value="{{ hasCartItems }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:-7px;right:-7px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#f08143;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;border:2px solid #fff">{{ cartCount }}</span></sc-if>
+        </div>
+        <a href="{{ waOrcamento }}" target="_blank" rel="noopener" style="text-decoration:none;background:#f08143;color:#fff;font-weight:700;font-size:14px;padding:11px 18px;border-radius:10px;box-shadow:0 6px 16px rgba(240,129,67,.28)" style-hover="background:#e06f30">Pedir orçamento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HOMEPAGE ===================== -->
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <!-- HERO -->
+      <section style="max-width:1200px;margin:0 auto;padding:clamp(40px,7vw,84px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,64px);align-items:center">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:8px;background:#f5f4f2;border:1px solid #ecebe8;color:#727271;font-weight:600;font-size:13px;padding:7px 13px;border-radius:999px;margin-bottom:22px">
+            <span style="width:7px;height:7px;border-radius:50%;background:#25D366;display:inline-block"></span>Setúbal · Tróia — resposta rápida
+          </div>
+          <h1 style="font-weight:800;font-size:clamp(38px,6vw,62px);line-height:1.04;letter-spacing:-1px;margin:0 0 20px">Reparações rápidas<br>e pessoais</h1>
+          <p style="font-size:clamp(17px,2.2vw,20px);color:#5c5b58;max-width:480px;margin:0 0 32px">Fala direto com quem resolve o teu problema em casa. Sem apps. Sem intermediários.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+            <a href="{{ waOrcamento }}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;background:#f08143;color:#fff;font-weight:700;font-size:16px;padding:16px 26px;border-radius:12px;box-shadow:0 10px 24px rgba(240,129,67,.32)" style-hover="background:#e06f30">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.13c-.24.68-1.42 1.32-1.95 1.36-.5.05-1.13.07-1.83-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.82-4.2-4.97-4.39-.15-.2-1.19-1.58-1.19-3.01s.75-2.13 1.02-2.43c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.02.89 2.17.07.15.12.32.02.51-.09.2-.14.32-.27.49-.14.17-.29.38-.41.51-.14.15-.28.31-.12.59.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.15.43.12.59-.07.16-.2.68-.79.86-1.06.18-.27.36-.22.59-.13.24.09 1.52.72 1.78.85.27.13.44.2.51.31.07.12.07.68-.17 1.34Z"></path></svg>
+              Pedir orçamento no WhatsApp
+            </a>
+            <div onclick="{{ navServicos }}" style="cursor:pointer;font-weight:700;font-size:16px;color:#1c1b17;padding:16px 6px;border-bottom:2px solid transparent" style-hover="border-bottom:2px solid #f08143">Ver serviços →</div>
+          </div>
+          <div style="display:flex;gap:26px;margin-top:34px;flex-wrap:wrap;color:#727271;font-size:14px;font-weight:600">
+            <div>✓ Orçamento fixo</div><div>✓ Sem surpresas</div><div>✓ Qualquer marca</div>
+          </div>
+        </div>
+        <div style="position:relative">
+          <div style="position:absolute;inset:14px -14px -14px 14px;background:#f08143;border-radius:22px;opacity:.16"></div>
+          <img class="hero-img" src="16326f9b-fa4a-4f94-bb45-1d09b2f001a4" alt="Técnico profissional a trabalhar numa reparação em casa" loading="eager" style="position:relative;width:100%;height:clamp(320px,42vw,480px);object-fit:cover;border-radius:20px;box-shadow:0 24px 50px rgba(28,27,23,.16)">
+        </div>
+      </section>
+
+      <!-- TAXA DE VISITA -->
+      <section style="max-width:1200px;margin:0 auto;padding:0 24px clamp(8px,2vw,16px)">
+        <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:#fdeee4;border:1px solid #f7cdaf;border-radius:16px;padding:20px 24px">
+          <div style="flex:none;display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:#f08143;color:#fff;font-weight:800;font-size:17px">25€</div>
+          <div style="flex:1;min-width:240px">
+            <div style="font-weight:800;font-size:17px;margin-bottom:2px">Taxa de visita: 25€</div>
+            <p style="margin:0;color:#8a5a3c;font-size:15px">Inclui deslocação e diagnóstico. Se o serviço for realizado no momento, o valor é descontado no total.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMO FUNCIONA -->
+      <section style="background:#f5f4f2;border-top:1px solid #ecebe8;border-bottom:1px solid #ecebe8;margin-top:clamp(28px,4vw,48px)">
+        <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,80px) 24px">
+          <div style="text-align:center;max-width:620px;margin:0 auto 48px">
+            <div style="color:#f08143;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Como funciona</div>
+            <h2 style="font-weight:800;font-size:clamp(28px,4vw,40px);letter-spacing:-.5px;margin:0">Três passos. Zero complicações.</h2>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+            <sc-for list="{{ steps }}" as="step" hint-placeholder-count="3">
+              <div style="background:#fff;border:1px solid #ecebe8;border-radius:18px;padding:32px 28px">
+                <div style="font-weight:800;font-size:46px;color:#f08143;line-height:1;letter-spacing:-1px;margin-bottom:16px">{{ step.num }}</div>
+                <h3 style="font-weight:700;font-size:19px;margin:0 0 8px">{{ step.title }}</h3>
+                <p style="color:#5c5b58;font-size:15px;margin:0">{{ step.desc }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVIÇOS -->
+      <section style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px">
+          <div>
+            <div style="color:#f08143;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Serviços</div>
+            <h2 style="font-weight:800;font-size:clamp(28px,4vw,40px);letter-spacing:-.5px;margin:0">O que resolvemos por ti</h2>
+          </div>
+          <div onclick="{{ navServicos }}" style="cursor:pointer;font-weight:700;color:#1c1b17;border-bottom:2px solid #f08143;padding-bottom:3px">Ver todos os serviços →</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px">
+          <sc-for list="{{ services }}" as="svc" hint-placeholder-count="6">
+            <div onclick="{{ svc.onOpen }}" style="background:#fff;border:1px solid #ecebe8;border-radius:18px;overflow:hidden;box-shadow:0 2px 8px rgba(28,27,23,.04);cursor:pointer" style-hover="box-shadow:0 16px 34px rgba(28,27,23,.12)">
+              <div style="overflow:hidden;height:172px"><sc-if value="{{ svc.img }}" hint-placeholder-val="{{ false }}"><img src="{{ svc.img }}" alt="{{ svc.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></sc-if></div>
+              <div style="padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+                <h3 style="font-weight:700;font-size:17px;margin:0">{{ svc.name }}</h3>
+                <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}"><span style="flex:none;background:#fdeee4;color:#e06f30;font-weight:700;font-size:13px;padding:6px 11px;border-radius:999px;white-space:nowrap">{{ svc.price }}</span></sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <!-- PORQUÊ -->
+      <section style="background:#1c1b17;color:#fff">
+        <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px">
+          <div style="text-align:center;max-width:640px;margin:0 auto 48px">
+            <div style="color:#f08143;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Porquê a Speedfaz</div>
+            <h2 style="font-weight:800;font-size:clamp(28px,4vw,40px);letter-spacing:-.5px;margin:0">Sem apps. Sem letra pequena.</h2>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+            <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="3">
+              <div style="background:#26241f;border:1px solid #34322c;border-radius:18px;padding:32px 28px">
+                <div style="width:46px;height:46px;border-radius:12px;background:#f08143;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-weight:800;color:#fff;font-size:20px">✓</div>
+                <h3 style="font-weight:700;font-size:19px;margin:0 0 8px">{{ b.title }}</h3>
+                <p style="color:#b7b4ad;font-size:15px;margin:0">{{ b.desc }}</p>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEPOIMENTOS -->
+      <sc-if value="{{ showTestimonials }}" hint-placeholder-val="{{ true }}">
+      <section style="max-width:1200px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px">
+        <div style="text-align:center;max-width:620px;margin:0 auto 44px">
+          <div style="color:#f08143;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Depoimentos</div>
+          <h2 style="font-weight:800;font-size:clamp(28px,4vw,40px);letter-spacing:-.5px;margin:0 0 10px">O que dizem os nossos clientes</h2>
+          <p style="color:#727271;font-size:16px;margin:0">Somos novos — em breve, as opiniões reais aparecem aqui.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
+          <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+            <div style="background:#f5f4f2;border:1px dashed #d8d6d1;border-radius:18px;padding:30px 26px">
+              <div style="color:#f0b343;font-size:20px;letter-spacing:3px;margin-bottom:16px">★★★★★</div>
+              <p style="color:#9a9893;font-size:15px;font-style:italic;margin:0 0 22px">"A tua opinião pode ser a próxima. Após o serviço, partilha a tua experiência."</p>
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:42px;height:42px;border-radius:50%;background:#e5e3de"></div>
+                <div><div style="height:9px;width:96px;background:#e0ded9;border-radius:5px;margin-bottom:7px"></div><div style="height:8px;width:64px;background:#e8e6e1;border-radius:5px"></div></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+      </sc-if>
+
+      <!-- CTA FINAL -->
+      <section style="background:#f08143">
+        <div style="max-width:1000px;margin:0 auto;padding:clamp(48px,6vw,80px) 24px;text-align:center">
+          <h2 style="color:#fff;font-weight:800;font-size:clamp(30px,4.5vw,46px);letter-spacing:-.5px;margin:0 0 14px">Tem um problema em casa? Resolve já.</h2>
+          <p style="color:#fff;opacity:.92;font-size:clamp(16px,2vw,19px);margin:0 0 30px">Manda-nos uma mensagem. Respondemos rápido e dizemos-te o preço logo.</p>
+          <a href="{{ wa }}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#1c1b17;font-weight:700;font-size:17px;padding:17px 30px;border-radius:12px;box-shadow:0 14px 30px rgba(28,27,23,.22)" style-hover="background:#1c1b17;color:#fff">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.13c-.24.68-1.42 1.32-1.95 1.36-.5.05-1.13.07-1.83-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.82-4.2-4.97-4.39-.15-.2-1.19-1.58-1.19-3.01s.75-2.13 1.02-2.43c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.02.89 2.17.07.15.12.32.02.51-.09.2-.14.32-.27.49-.14.17-.29.38-.41.51-.14.15-.28.31-.12.59.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.15.43.12.59-.07.16-.2.68-.79.86-1.06.18-.27.36-.22.59-.13.24.09 1.52.72 1.78.85.27.13.44.2.51.31.07.12.07.68-.17 1.34Z"></path></svg>
+            Falar no WhatsApp
+          </a>
+        </div>
+      </section>
+    </div>
+    </sc-if>
+
+    <!-- ===================== SERVIÇOS ===================== -->
+    <sc-if value="{{ isServicos }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <section style="background:#f5f4f2;border-bottom:1px solid #ecebe8">
+        <div style="max-width:1100px;margin:0 auto;padding:clamp(44px,5vw,72px) 24px">
+          <div style="color:#f08143;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Serviços</div>
+          <h1 style="font-weight:800;font-size:clamp(34px,5vw,54px);letter-spacing:-1px;margin:0 0 14px">Reparações domésticas em Setúbal</h1>
+          <p style="font-size:clamp(16px,2vw,19px);color:#5c5b58;max-width:620px;margin:0">Escolhe um serviço para ver detalhes, o que está incluído e o preço — e adiciona ao carrinho.</p>
+        </div>
+      </section>
+      <section style="max-width:1100px;margin:0 auto;padding:clamp(32px,4vw,48px) 24px 0">
+        <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:#fdeee4;border:1px solid #f7cdaf;border-radius:16px;padding:20px 24px">
+          <div style="flex:none;display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:#f08143;color:#fff;font-weight:800;font-size:17px">25€</div>
+          <div style="flex:1;min-width:240px">
+            <div style="font-weight:800;font-size:17px;margin-bottom:2px">Taxa de visita: 25€</div>
+            <p style="margin:0;color:#8a5a3c;font-size:15px">Inclui deslocação e diagnóstico. Se o serviço for realizado no momento, o valor é descontado no total.</p>
+          </div>
+        </div>
+      </section>
+      <section style="max-width:1100px;margin:0 auto;padding:clamp(28px,4vw,40px) 24px clamp(40px,5vw,64px)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px">
+          <sc-for list="{{ servicesDetailed }}" as="svc" hint-placeholder-count="7">
+            <div onclick="{{ svc.onOpen }}" style="background:#fff;border:1px solid #ecebe8;border-radius:18px;overflow:hidden;box-shadow:0 2px 8px rgba(28,27,23,.04);cursor:pointer;display:flex;flex-direction:column" style-hover="box-shadow:0 16px 34px rgba(28,27,23,.12)">
+              <div style="overflow:hidden;height:184px"><sc-if value="{{ svc.img }}" hint-placeholder-val="{{ false }}"><img src="{{ svc.img }}" alt="{{ svc.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></sc-if></div>
+              <div style="padding:22px 24px;display:flex;flex-direction:column;gap:10px;flex:1">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+                  <h3 style="font-weight:700;font-size:19px;margin:0">{{ svc.name }}</h3>
+                  <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}"><span style="flex:none;background:#fdeee4;color:#e06f30;font-weight:700;font-size:13px;padding:6px 11px;border-radius:999px;white-space:nowrap">{{ svc.price }}</span></sc-if>
+                </div>
+                <p style="color:#5c5b58;font-size:15px;margin:0;flex:1">{{ svc.desc }}</p>
+                <div style="display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:15px;color:#f08143;margin-top:4px">Ver detalhes →</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </div>
+    </sc-if>
+
+    <!-- ===================== DETALHE DE SERVIÇO ===================== -->
+    <sc-if value="{{ isService }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <section style="max-width:1100px;margin:0 auto;padding:clamp(28px,4vw,44px) 24px clamp(48px,5vw,72px)">
+        <div onclick="{{ navServicos }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:7px;color:#727271;font-weight:600;font-size:15px;margin-bottom:24px" style-hover="color:#f08143">← Voltar aos serviços</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,48px);align-items:start">
+          <div style="position:relative">
+            <div style="position:absolute;inset:14px -14px -14px 14px;background:#f08143;border-radius:22px;opacity:.16"></div>
+            <sc-if value="{{ currentService.img }}" hint-placeholder-val="{{ false }}"><img src="{{ currentService.img }}" alt="{{ currentService.name }}" style="position:relative;width:100%;height:clamp(280px,34vw,400px);object-fit:cover;border-radius:20px;box-shadow:0 24px 50px rgba(28,27,23,.16)"></sc-if>
+          </div>
+          <div>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+              <h1 style="font-weight:800;font-size:clamp(28px,3.6vw,42px);letter-spacing:-.5px;margin:0">{{ currentService.name }}</h1>
+              <span style="flex:none;background:#fdeee4;color:#e06f30;font-weight:800;font-size:15px;padding:8px 14px;border-radius:999px;white-space:nowrap">{{ currentService.price }}</span>
+            </div>
+            <p style="font-size:17px;color:#5c5b58;margin:0 0 26px">{{ currentService.descLong }}</p>
+            <div style="font-weight:800;font-size:16px;margin-bottom:12px">O que está incluído</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:26px">
+              <sc-for list="{{ currentService.included }}" as="inc" hint-placeholder-count="4">
+                <div style="display:flex;align-items:flex-start;gap:11px">
+                  <span style="flex:none;width:22px;height:22px;border-radius:50%;background:#e9f9ef;color:#1ebe5a;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;margin-top:1px">✓</span>
+                  <span style="color:#3d3c39;font-size:15px">{{ inc }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;background:#fdeee4;border:1px solid #f7cdaf;border-radius:12px;padding:13px 16px;margin-bottom:26px">
+              <span style="flex:none;font-weight:800;color:#f08143;font-size:14px">+25€</span>
+              <span style="color:#8a5a3c;font-size:14px">Taxa de visita — descontada no total se o serviço for feito no momento.</span>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+              <sc-if value="{{ currentInCart }}" hint-placeholder-val="{{ false }}">
+                <div onclick="{{ navCart }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:9px;background:#1c1b17;color:#fff;font-weight:700;font-size:16px;padding:15px 24px;border-radius:12px" style-hover="background:#000">No carrinho ✓ — Ver carrinho</div>
+              </sc-if>
+              <sc-if value="{{ currentNotInCart }}" hint-placeholder-val="{{ true }}">
+                <div onclick="{{ addCurrent }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:9px;background:#f08143;color:#fff;font-weight:700;font-size:16px;padding:15px 24px;border-radius:12px;box-shadow:0 10px 24px rgba(240,129,67,.3)" style-hover="background:#e06f30">+ Adicionar ao carrinho</div>
+              </sc-if>
+              <a href="{{ currentService.waLink }}" target="_blank" rel="noopener" style="text-decoration:none;font-weight:700;font-size:15px;color:#1c1b17;border-bottom:2px solid #f08143;padding-bottom:3px">Falar sobre este serviço →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    </sc-if>
+
+    <!-- ===================== CARRINHO ===================== -->
+    <sc-if value="{{ isCart }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <section style="max-width:920px;margin:0 auto;padding:clamp(36px,4vw,56px) 24px clamp(48px,5vw,80px)">
+        <h1 style="font-weight:800;font-size:clamp(30px,4vw,46px);letter-spacing:-.5px;margin:0 0 6px">O teu carrinho</h1>
+        <p style="color:#727271;font-size:16px;margin:0 0 32px">Revê os serviços escolhidos e pede tudo de uma vez no WhatsApp.</p>
+
+        <sc-if value="{{ hasCartItems }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <!-- LISTA DE SERVIÇOS -->
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <sc-for list="{{ cartServices }}" as="item" hint-placeholder-count="2">
+              <div onclick="{{ item.onOpen }}" style="display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #ecebe8;border-radius:16px;padding:14px 16px;cursor:pointer;box-shadow:0 2px 8px rgba(28,27,23,.04)" style-hover="border-color:#f7cdaf">
+                <sc-if value="{{ item.img }}" hint-placeholder-val="{{ false }}"><img src="{{ item.img }}" alt="{{ item.name }}" style="flex:none;width:72px;height:72px;object-fit:cover;border-radius:12px"></sc-if>
+                <div style="flex:1;min-width:0">
+                  <h3 style="font-weight:700;font-size:17px;margin:0 0 3px">{{ item.name }}</h3>
+                  <div style="color:#e06f30;font-weight:700;font-size:14px">{{ item.price }}</div>
+                  <div style="color:#9a9893;font-size:13px;margin-top:2px">Toca para ver detalhes</div>
+                </div>
+                <div onclick="{{ item.onRemove }}" title="Remover" style="flex:none;width:38px;height:38px;border-radius:10px;border:1px solid #ecebe8;display:flex;align-items:center;justify-content:center;color:#9a9893;font-size:18px;cursor:pointer" style-hover="border-color:#e0594a;color:#e0594a">✕</div>
+              </div>
+            </sc-for>
+          </div>
+
+          <!-- PRODUTOS RELACIONADOS -->
+          <sc-if value="{{ hasRelated }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:38px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px">
+              <h2 style="font-weight:800;font-size:20px;margin:0">Produtos relacionados</h2>
+              <div style="display:flex;gap:8px">
+                <div onclick="{{ scrollRelLeft }}" style="cursor:pointer;width:38px;height:38px;border-radius:10px;border:1px solid #ecebe8;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1c1b17" style-hover="border-color:#f08143">‹</div>
+                <div onclick="{{ scrollRelRight }}" style="cursor:pointer;width:38px;height:38px;border-radius:10px;border:1px solid #ecebe8;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1c1b17" style-hover="border-color:#f08143">›</div>
+              </div>
+            </div>
+            <div class="sf-scroll" ref="{{ relRef }}" style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:10px;scroll-snap-type:x mandatory">
+              <sc-for list="{{ relatedProducts }}" as="prod" hint-placeholder-count="3">
+                <div style="flex:0 0 calc((100% - 32px) / 3);min-width:150px;scroll-snap-align:start;background:#fff;border:1px solid #ecebe8;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(28,27,23,.04)">
+                  <div style="height:118px;overflow:hidden"><sc-if value="{{ prod.img }}" hint-placeholder-val="{{ false }}"><img src="{{ prod.img }}" alt="{{ prod.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></sc-if></div>
+                  <div style="padding:12px 14px">
+                    <h4 style="font-weight:700;font-size:14px;margin:0 0 4px;line-height:1.25;text-wrap:pretty">{{ prod.name }}</h4>
+                    <div style="color:#e06f30;font-weight:700;font-size:14px">{{ prod.price }}</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- RODAPÉ DO CARRINHO -->
+          <div style="margin-top:34px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;background:#1c1b17;border-radius:18px;padding:22px 26px">
+            <div onclick="{{ toggleTotal }}" style="cursor:pointer">
+              <div style="color:#b7b4ad;font-size:13px;font-weight:600">Valor total estimado</div>
+              <div style="display:flex;align-items:center;gap:9px">
+                <span style="color:#fff;font-weight:800;font-size:30px;letter-spacing:-.5px">{{ totalLabel }}</span>
+                <span style="color:#f08143;font-size:13px;font-weight:700;border-bottom:1.5px solid #f08143;padding-bottom:1px">ver detalhe</span>
+              </div>
+            </div>
+            <a href="{{ waCartLink }}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:16px;padding:16px 24px;border-radius:12px;box-shadow:0 10px 24px rgba(37,211,102,.3)" style-hover="background:#1ebe5a">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.13c-.24.68-1.42 1.32-1.95 1.36-.5.05-1.13.07-1.83-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.82-4.2-4.97-4.39-.15-.2-1.19-1.58-1.19-3.01s.75-2.13 1.02-2.43c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.02.89 2.17.07.15.12.32.02.51-.09.2-.14.32-.27.49-.14.17-.29.38-.41.51-.14.15-.28.31-.12.59.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.15.43.12.59-.07.16-.2.68-.79.86-1.06.18-.27.36-.22.59-.13.24.09 1.52.72 1.78.85.27.13.44.2.51.31.07.12.07.68-.17 1.34Z"></path></svg>
+              Pedir no WhatsApp
+            </a>
+          </div>
+          <p style="color:#9a9893;font-size:13px;margin:14px 2px 0">Valor estimado — o preço final pode variar após avaliação no local.</p>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ true }}">
+        <div style="text-align:center;background:#f5f4f2;border:1px solid #ecebe8;border-radius:20px;padding:clamp(40px,6vw,64px) 24px">
+          <div style="width:64px;height:64px;border-radius:16px;background:#fff;border:1px solid #ecebe8;display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#727271" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M2.5 3h2l2.2 11.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.2L21 7H6"></path></svg>
+          </div>
+          <h2 style="font-weight:800;font-size:24px;margin:0 0 8px">O teu carrinho está vazio</h2>
+          <p style="color:#727271;font-size:16px;margin:0 0 24px">Escolhe os serviços de que precisas e adiciona-os aqui.</p>
+          <div onclick="{{ navServicos }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:9px;background:#f08143;color:#fff;font-weight:700;font-size:16px;padding:15px 24px;border-radius:12px;box-shadow:0 10px 24px rgba(240,129,67,.3)" style-hover="background:#e06f30">Ver serviços</div>
+        </div>
+        </sc-if>
+      </section>
+    </div>
+    </sc-if>
+
+    <!-- ===================== SOBRE ===================== -->
+    <sc-if value="{{ isSobre }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <section style="max-width:1100px;margin:0 auto;padding:clamp(44px,6vw,76px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,56px);align-items:center">
+        <div>
+          <div style="color:#f08143;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">Sobre nós</div>
+          <h1 style="font-weight:800;font-size:clamp(32px,4.5vw,50px);line-height:1.06;letter-spacing:-1px;margin:0 0 18px">Reparações residenciais de confiança</h1>
+          <p style="font-size:17px;color:#5c5b58;margin:0">Somos uma empresa de reparações residenciais focada em rapidez, confiança e atendimento pessoal direto. Na Speedfaz, não falas com máquinas ou aplicativos — falas com pessoas reais que entendem o teu problema e resolvem na hora.</p>
+        </div>
+        <div style="position:relative">
+          <div style="position:absolute;inset:14px -14px -14px 14px;background:#f08143;border-radius:22px;opacity:.16"></div>
+          <img src="1079fb8d-f175-4592-92bc-231db44e363d" alt="Equipa Speedfaz a trabalhar" loading="lazy" style="position:relative;width:100%;height:clamp(300px,38vw,420px);object-fit:cover;border-radius:20px;box-shadow:0 24px 50px rgba(28,27,23,.16)">
+        </div>
+      </section>
+      <section style="background:#f5f4f2;border-top:1px solid #ecebe8;border-bottom:1px solid #ecebe8">
+        <div style="max-width:1100px;margin:0 auto;padding:clamp(44px,5vw,72px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+          <div style="background:#fff;border:1px solid #ecebe8;border-radius:18px;padding:30px 28px">
+            <h3 style="font-weight:800;font-size:20px;margin:0 0 10px;color:#f08143">Missão</h3>
+            <p style="color:#5c5b58;font-size:15px;margin:0">Resolver problemas domésticos pontuais de forma rápida, profissional e sem intermediários. O teu conforto é a nossa prioridade.</p>
+          </div>
+          <div style="background:#fff;border:1px solid #ecebe8;border-radius:18px;padding:30px 28px">
+            <h3 style="font-weight:800;font-size:20px;margin:0 0 10px;color:#f08143">Visão</h3>
+            <p style="color:#5c5b58;font-size:15px;margin:0">Ser a referência local para pequenas reparações residenciais, reconhecida pela qualidade e honestidade.</p>
+          </div>
+          <div style="background:#fff;border:1px solid #ecebe8;border-radius:18px;padding:30px 28px">
+            <h3 style="font-weight:800;font-size:20px;margin:0 0 10px;color:#f08143">Valores</h3>
+            <p style="color:#5c5b58;font-size:15px;margin:0">Honestidade · Qualidade · Rapidez · Preço justo. O que combinamos é o que cumprimos.</p>
+          </div>
+        </div>
+      </section>
+      <section style="max-width:820px;margin:0 auto;padding:clamp(44px,5vw,72px) 24px;text-align:center">
+        <h2 style="font-weight:800;font-size:clamp(26px,3.5vw,36px);letter-spacing:-.5px;margin:0 0 16px">Por que escolher a Speedfaz</h2>
+        <p style="font-size:18px;color:#5c5b58;margin:0 0 30px">Não somos um aplicativo onde falas com máquinas. Não estamos presos a uma marca específica — trabalhamos com qualquer produto teu. Negoceia o preço, conhece quem faz o trabalho. Reparações rápidas, honestas, sem surpresas.</p>
+        <a href="{{ waOrcamento }}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;background:#f08143;color:#fff;font-weight:700;font-size:16px;padding:16px 26px;border-radius:12px;box-shadow:0 10px 24px rgba(240,129,67,.32)" style-hover="background:#e06f30">Pedir orçamento no WhatsApp</a>
+      </section>
+    </div>
+    </sc-if>
+
+    <!-- ===================== BLOG ===================== -->
+    <sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <section style="background:#f5f4f2;border-bottom:1px solid #ecebe8">
+        <div style="max-width:1200px;margin:0 auto;padding:clamp(44px,5vw,72px) 24px">
+          <div style="color:#f08143;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Blog</div>
+          <h1 style="font-weight:800;font-size:clamp(34px,5vw,54px);letter-spacing:-1px;margin:0 0 14px">Dicas e guias práticos</h1>
+          <p style="font-size:clamp(16px,2vw,19px);color:#5c5b58;max-width:600px;margin:0">Pequenos cuidados que poupam dinheiro e evitam dores de cabeça em casa.</p>
+        </div>
+      </section>
+      <section style="max-width:1200px;margin:0 auto;padding:clamp(40px,5vw,64px) 24px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:26px">
+          <sc-for list="{{ blogPosts }}" as="post" hint-placeholder-count="8">
+            <div style="background:#fff;border:1px solid #ecebe8;border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 2px 8px rgba(28,27,23,.04)" style-hover="box-shadow:0 16px 34px rgba(28,27,23,.12)">
+              <div style="position:relative;height:184px;overflow:hidden">
+                <sc-if value="{{ post.img }}" hint-placeholder-val="{{ false }}"><img src="{{ post.img }}" alt="{{ post.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></sc-if>
+                <span style="position:absolute;top:13px;left:13px;background:rgba(28,27,23,.85);color:#fff;font-weight:600;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:5px 10px;border-radius:999px">{{ post.tag }}</span>
+              </div>
+              <div style="padding:20px 22px 24px">
+                <div style="color:#9a9893;font-size:13px;font-weight:600;margin-bottom:8px">{{ post.date }}</div>
+                <h3 style="font-weight:700;font-size:18px;line-height:1.3;margin:0;text-wrap:pretty">{{ post.title }}</h3>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </div>
+    </sc-if>
+
+    <!-- ===================== CONTACTO ===================== -->
+    <sc-if value="{{ isContacto }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <section style="max-width:1100px;margin:0 auto;padding:clamp(44px,5vw,72px) 24px">
+        <div style="color:#f08143;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Contacto</div>
+        <h1 style="font-weight:800;font-size:clamp(34px,5vw,54px);letter-spacing:-1px;margin:0 0 14px">Falar connosco é simples</h1>
+        <p style="font-size:clamp(16px,2vw,19px);color:#5c5b58;max-width:580px;margin:0 0 40px">Sem apps, sem formulários longos. Liga, manda mensagem ou passa pela loja.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a href="{{ waOrcamento }}" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:11px;background:#25D366;color:#fff;font-weight:700;font-size:17px;padding:18px 24px;border-radius:13px;margin-bottom:18px;box-shadow:0 12px 28px rgba(37,211,102,.3)" style-hover="background:#1ebe5a">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.13c-.24.68-1.42 1.32-1.95 1.36-.5.05-1.13.07-1.83-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.82-4.2-4.97-4.39-.15-.2-1.19-1.58-1.19-3.01s.75-2.13 1.02-2.43c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.02.89 2.17.07.15.12.32.02.51-.09.2-.14.32-.27.49-.14.17-.29.38-.41.51-.14.15-.28.31-.12.59.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.15.43.12.59-.07.16-.2.68-.79.86-1.06.18-.27.36-.22.59-.13.24.09 1.52.72 1.78.85.27.13.44.2.51.31.07.12.07.68-.17 1.34Z"></path></svg>
+              WhatsApp · 923 322 717
+            </a>
+            <div style="display:flex;flex-direction:column;gap:2px;border-top:1px solid #ecebe8;padding:18px 0">
+              <span style="color:#9a9893;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Telefones</span>
+              <a href="tel:+351923322717" style="color:#1c1b17;text-decoration:none;font-weight:700;font-size:18px" style-hover="color:#f08143">923 322 717</a>
+              <a href="tel:+351963688086" style="color:#1c1b17;text-decoration:none;font-weight:700;font-size:18px" style-hover="color:#f08143">963 688 086</a>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;border-top:1px solid #ecebe8;padding:18px 0">
+              <span style="color:#9a9893;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Morada</span>
+              <span style="font-weight:600;font-size:16px;color:#1c1b17">Rua dos Pinheirinhos, 15, loja j<br>2910-121 Setúbal</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;border-top:1px solid #ecebe8;padding:18px 0">
+              <span style="color:#9a9893;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Email</span>
+              <span style="font-weight:700;font-size:17px;color:#1c1b17"><span>{{ emailUser }}</span><span>{{ emailAt }}</span><span>{{ emailDomain }}</span></span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;border-top:1px solid #ecebe8;padding:18px 0">
+              <span style="color:#9a9893;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Online</span>
+              <a href="https://instagram.com/speed.faz" target="_blank" rel="noopener" style="color:#1c1b17;text-decoration:none;font-weight:700;font-size:17px" style-hover="color:#f08143">@speed.faz</a>
+              <span style="font-weight:600;font-size:16px;color:#727271">www.speedfaz.com</span>
+            </div>
+          </div>
+          <div>
+            <div style="border:1px solid #ecebe8;border-radius:18px;overflow:hidden;box-shadow:0 6px 20px rgba(28,27,23,.08)">
+              <iframe title="Zona de atuação Speedfaz — Setúbal" src="https://maps.google.com/maps?q=Rua%20dos%20Pinheirinhos%2015%20Set%C3%BAbal&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" style="width:100%;height:340px;border:0" loading="lazy"></iframe>
+            </div>
+            <div style="margin-top:14px;display:flex;align-items:center;gap:10px;color:#727271;font-weight:600;font-size:14px;background:#f5f4f2;border:1px solid #ecebe8;border-radius:12px;padding:14px 16px">
+              <span style="width:9px;height:9px;border-radius:50%;background:#f08143;display:inline-block"></span>Zona de atuação: Setúbal e Tróia
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    </sc-if>
+  </main>
+
+  <!-- ===================== MODAL: DETALHE NO CARRINHO ===================== -->
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onclick="{{ closeModal }}" style="position:fixed;inset:0;z-index:80;background:rgba(28,27,23,.55);display:flex;align-items:center;justify-content:center;padding:20px">
+    <div onclick="{{ stopProp }}" style="background:#fff;border-radius:20px;max-width:520px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 30px 70px rgba(0,0,0,.35);animation:sffade .22s ease both">
+      <div style="position:relative;height:200px;overflow:hidden;border-radius:20px 20px 0 0">
+        <sc-if value="{{ modalService.img }}" hint-placeholder-val="{{ false }}"><img src="{{ modalService.img }}" alt="{{ modalService.name }}" style="width:100%;height:100%;object-fit:cover"></sc-if>
+        <div onclick="{{ closeModal }}" style="position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#1c1b17">✕</div>
+      </div>
+      <div style="padding:26px 28px 28px">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+          <h3 style="font-weight:800;font-size:23px;margin:0">{{ modalService.name }}</h3>
+          <span style="flex:none;background:#fdeee4;color:#e06f30;font-weight:800;font-size:14px;padding:7px 13px;border-radius:999px;white-space:nowrap">{{ modalService.price }}</span>
+        </div>
+        <p style="color:#5c5b58;font-size:15px;margin:0 0 20px">{{ modalService.descLong }}</p>
+        <div style="font-weight:800;font-size:15px;margin-bottom:10px">O que está incluído</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:24px">
+          <sc-for list="{{ modalService.included }}" as="inc" hint-placeholder-count="4">
+            <div style="display:flex;align-items:flex-start;gap:11px">
+              <span style="flex:none;width:21px;height:21px;border-radius:50%;background:#e9f9ef;color:#1ebe5a;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-top:1px">✓</span>
+              <span style="color:#3d3c39;font-size:15px">{{ inc }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div onclick="{{ closeModal }}" style="cursor:pointer;flex:1;text-align:center;background:#1c1b17;color:#fff;font-weight:700;font-size:15px;padding:14px 18px;border-radius:12px" style-hover="background:#000">Continuar</div>
+          <div onclick="{{ removeFromModal }}" style="cursor:pointer;text-align:center;background:#fff;border:1px solid #ecebe8;color:#e0594a;font-weight:700;font-size:15px;padding:14px 18px;border-radius:12px" style-hover="border-color:#e0594a">Remover</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ===================== MODAL: TOTAL ESTIMADO ===================== -->
+  <sc-if value="{{ showTotal }}" hint-placeholder-val="{{ false }}">
+  <div onclick="{{ toggleTotal }}" style="position:fixed;inset:0;z-index:80;background:rgba(28,27,23,.55);display:flex;align-items:center;justify-content:center;padding:20px">
+    <div onclick="{{ stopProp }}" style="background:#fff;border-radius:20px;max-width:480px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 30px 70px rgba(0,0,0,.35);animation:sffade .22s ease both">
+      <div style="padding:26px 28px 28px">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px">
+          <h3 style="font-weight:800;font-size:22px;margin:0">Valor estimado</h3>
+          <div onclick="{{ toggleTotal }}" style="cursor:pointer;width:34px;height:34px;border-radius:50%;background:#f5f4f2;display:flex;align-items:center;justify-content:center;font-size:17px;color:#1c1b17;flex:none">✕</div>
+        </div>
+        <p style="color:#9a9893;font-size:14px;margin:0 0 22px">O preço final pode variar após avaliação no local.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid #ecebe8;padding-top:18px">
+          <sc-for list="{{ cartServices }}" as="item" hint-placeholder-count="2">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:14px">
+              <span style="color:#3d3c39;font-size:15px">{{ item.name }}</span>
+              <span style="font-weight:700;font-size:15px;white-space:nowrap">{{ item.displayPrice }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid #ecebe8;margin-top:16px;padding-top:14px;color:#727271;font-size:14px">
+          <span>IVA incluído (23%)</span><span style="font-weight:600">{{ ivaLabel }}</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:2px solid #1c1b17;margin-top:12px;padding-top:14px">
+          <span style="font-weight:800;font-size:17px">Total estimado</span>
+          <span style="font-weight:800;font-size:24px;color:#f08143">{{ totalLabel }}</span>
+        </div>
+        <a href="{{ waCartLink }}" target="_blank" rel="noopener" style="text-decoration:none;display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:16px;padding:15px 18px;border-radius:12px;margin-top:22px" style-hover="background:#1ebe5a">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.13c-.24.68-1.42 1.32-1.95 1.36-.5.05-1.13.07-1.83-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.82-4.2-4.97-4.39-.15-.2-1.19-1.58-1.19-3.01s.75-2.13 1.02-2.43c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.02.89 2.17.07.15.12.32.02.51-.09.2-.14.32-.27.49-.14.17-.29.38-.41.51-.14.15-.28.31-.12.59.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.15.43.12.59-.07.16-.2.68-.79.86-1.06.18-.27.36-.22.59-.13.24.09 1.52.72 1.78.85.27.13.44.2.51.31.07.12.07.68-.17 1.34Z"></path></svg>
+          Pedir no WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="background:#1c1b17;color:#b7b4ad">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(44px,5vw,64px) 24px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <svg width="38" height="38" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M9 33 A15 15 0 0 1 39 33" stroke="#727271" stroke-width="3.4" stroke-linecap="round" fill="none"></path>
+            <line x1="24" y1="33" x2="32.5" y2="20.5" stroke="#f08143" stroke-width="3.6" stroke-linecap="round"></line>
+            <rect x="30.5" y="15.5" width="10" height="5.4" rx="1.6" transform="rotate(34 35.5 18.2)" fill="#f08143"></rect>
+            <circle cx="24" cy="33" r="3.6" fill="#fff"></circle>
+          </svg>
+          <div style="font-weight:800;font-size:20px;letter-spacing:.4px"><span style="color:#cfcdc8">SPEED</span><span style="color:#f08143">FAZ</span></div>
+        </div>
+        <p style="font-size:14px;color:#8f8c86;margin:0;max-width:260px">Reparações residenciais rápidas e de confiança em Setúbal e Tróia.</p>
+      </div>
+      <div>
+        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:14px">Navegação</div>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:14px">
+          <span onclick="{{ navHome }}" style="cursor:pointer" style-hover="color:#f08143">Início</span>
+          <span onclick="{{ navServicos }}" style="cursor:pointer" style-hover="color:#f08143">Serviços</span>
+          <span onclick="{{ navSobre }}" style="cursor:pointer" style-hover="color:#f08143">Sobre</span>
+          <span onclick="{{ navBlog }}" style="cursor:pointer" style-hover="color:#f08143">Blog</span>
+          <span onclick="{{ navContacto }}" style="cursor:pointer" style-hover="color:#f08143">Contacto</span>
+        </div>
+      </div>
+      <div>
+        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:14px">Contacto</div>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:14px">
+          <a href="tel:+351923322717" style="color:#b7b4ad;text-decoration:none" style-hover="color:#f08143">923 322 717</a>
+          <a href="tel:+351963688086" style="color:#b7b4ad;text-decoration:none" style-hover="color:#f08143">963 688 086</a>
+          <span style="color:#b7b4ad"><span>{{ emailUser }}</span><span>{{ emailAt }}</span><span>{{ emailDomain }}</span></span>
+          <a href="https://instagram.com/speed.faz" target="_blank" rel="noopener" style="color:#b7b4ad;text-decoration:none" style-hover="color:#f08143">@speed.faz</a>
+        </div>
+      </div>
+      <div>
+        <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:14px">Onde estamos</div>
+        <p style="font-size:14px;color:#8f8c86;margin:0">Rua dos Pinheirinhos, 15, loja j<br>2910-121 Setúbal<br>www.speedfaz.com</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid #34322c;margin-top:14px">
+      <div style="max-width:1200px;margin:0 auto;padding:20px 24px;font-size:13px;color:#7c7972">© 2025 Speedfaz. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- ===================== WHATSAPP FLOAT ===================== -->
+  <a href="{{ wa }}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" style="position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(37,211,102,.45);animation:sfpulse 2.6s infinite" style-hover="background:#1ebe5a">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.13c-.24.68-1.42 1.32-1.95 1.36-.5.05-1.13.07-1.83-.11-.42-.13-.96-.31-1.66-.61-2.92-1.26-4.82-4.2-4.97-4.39-.15-.2-1.19-1.58-1.19-3.01s.75-2.13 1.02-2.43c.27-.29.59-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.59.82 2.02.89 2.17.07.15.12.32.02.51-.09.2-.14.32-.27.49-.14.17-.29.38-.41.51-.14.15-.28.31-.12.59.16.29.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.27.15.43.12.59-.07.16-.2.68-.79.86-1.06.18-.27.36-.22.59-.13.24.09 1.52.72 1.78.85.27.13.44.2.51.31.07.12.07.68-.17 1.34Z"></path></svg>
+  </a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;351923322717&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showPrices&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home', currentId: null, modalId: null, showTotal: false, cart: [] };
+
+  go(page) {
+    this.setState({ page });
+    try { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); } catch (e) { try { window.scrollTo(0, 0); } catch (e2) {} }
+  }
+  openService(id) { this.setState({ currentId: id, page: 'service' }); try { window.scrollTo(0, 0); } catch (e) {} }
+  addToCart(id) { this.setState((s) => ({ cart: s.cart.includes(id) ? s.cart : [...s.cart, id] })); }
+  removeFromCart(id) { this.setState((s) => ({ cart: s.cart.filter((x) => x !== id) })); }
+
+  catalog() {
+    return [
+      { id: 'lampadas', name: 'Lâmpadas e tomadas', priceLabel: 'Desde 20€', priceValue: 20, cat: 'eletrica', img: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=700',
+        desc: 'Substituição, instalação e reparação de pontos de luz e tomadas elétricas.',
+        descLong: 'Resolvemos pontos de luz que não funcionam, tomadas queimadas e interruptores avariados. Substituímos, instalamos e testamos tudo com segurança.',
+        included: ['Diagnóstico do ponto elétrico', 'Substituição de lâmpadas e casquilhos', 'Instalação ou troca de tomadas e interruptores', 'Teste de funcionamento e segurança'] },
+      { id: 'torneiras', name: 'Torneiras e canalização', priceLabel: 'Desde 45€', priceValue: 45, cat: 'canalizacao', img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=700',
+        desc: 'Instalação e reparação de torneiras, desentupimentos e canalização em geral.',
+        descLong: 'Da torneira a pingar ao cano entupido — instalamos e reparamos torneiras, sifões e canalização, e verificamos fugas e pressão.',
+        included: ['Avaliação da canalização', 'Instalação ou reparação de torneira', 'Substituição de vedantes e sifões', 'Teste de fugas e pressão'] },
+      { id: 'moveis', name: 'Montagem de móveis', priceLabel: 'Desde 30€', priceValue: 30, cat: 'moveis', img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700',
+        desc: 'Montagem de qualquer móvel, de qualquer marca. Trazemos as ferramentas.',
+        descLong: 'Montamos qualquer móvel, de qualquer marca, com as nossas ferramentas. Fixamos à parede quando necessário e deixamos tudo limpo.',
+        included: ['Montagem completa do móvel', 'Ferramentas incluídas', 'Fixação à parede (se aplicável)', 'Limpeza e remoção de embalagens'] },
+      { id: 'eletro', name: 'Instalação de eletrodomésticos', priceLabel: 'Desde 40€', priceValue: 40, cat: 'eletrodomesticos', img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700',
+        desc: 'Instalação de máquinas de lavar, frigoríficos, fogões e mais.',
+        descLong: 'Instalamos máquinas de lavar, frigoríficos, fogões e outros eletrodomésticos, com ligação e teste de funcionamento incluídos.',
+        included: ['Posicionamento e nivelamento', 'Ligação elétrica e/ou de água', 'Teste de funcionamento', 'Conselhos de utilização'] },
+      { id: 'portas', name: 'Portas e janelas', priceLabel: 'Desde 35€', priceValue: 35, cat: 'portas', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700',
+        desc: 'Reparação de fechaduras, dobradiças, vedações e ajuste de portas e janelas.',
+        descLong: 'Ajustamos portas e janelas que não fecham bem, reparamos fechaduras e dobradiças e substituímos vedantes para mais conforto.',
+        included: ['Ajuste de portas e janelas', 'Reparação de fechaduras e dobradiças', 'Substituição de vedantes', 'Lubrificação e teste'] },
+      { id: 'serralharia', name: 'Serralharia', priceLabel: 'Desde 50€', priceValue: 50, cat: 'serralharia', img: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=700',
+        desc: 'Reparações e instalações de estruturas metálicas residenciais.',
+        descLong: 'Reparações e instalações de estruturas metálicas residenciais — portões, gradeamentos e reforços, com acabamento cuidado.',
+        included: ['Avaliação da estrutura', 'Reparação ou reforço metálico', 'Soldadura ou fixação conforme necessário', 'Acabamento e teste'] },
+      { id: 'manutencao', name: 'Manutenção preventiva', priceLabel: 'Orçamento personalizado', priceValue: null, cat: 'geral', img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700',
+        desc: 'Visita de manutenção geral para evitar problemas futuros.',
+        descLong: 'Uma visita de manutenção geral para detetar e resolver pequenos problemas antes que se tornem caros. Orçamento conforme o que a tua casa precisa.',
+        included: ['Inspeção geral da casa', 'Verificação elétrica e de canalização', 'Pequenos ajustes incluídos', 'Relatório de recomendações'] },
+    ];
+  }
+
+  products() {
+    return [
+      { name: 'Lâmpada LED E27 9W', price: '4,90 €', cat: 'eletrica', img: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=400' },
+      { name: 'Tomada Schuko branca', price: '6,50 €', cat: 'eletrica', img: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=400' },
+      { name: 'Interruptor duplo', price: '8,90 €', cat: 'eletrica', img: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=400' },
+      { name: 'Torneira monocomando', price: '39,00 €', cat: 'canalizacao', img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400' },
+      { name: 'Sifão universal', price: '7,50 €', cat: 'canalizacao', img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400' },
+      { name: 'Fita vedante (teflon)', price: '2,90 €', cat: 'canalizacao', img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400' },
+      { name: 'Kit parafusos e buchas', price: '5,90 €', cat: 'moveis', img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400' },
+      { name: 'Suporte TV de parede', price: '19,00 €', cat: 'moveis', img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400' },
+      { name: 'Pés ajustáveis (x4)', price: '9,00 €', cat: 'moveis', img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400' },
+      { name: 'Mangueira máquina de lavar', price: '8,00 €', cat: 'eletrodomesticos', img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400' },
+      { name: 'Filtro universal', price: '12,00 €', cat: 'eletrodomesticos', img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400' },
+      { name: 'Fechadura de segurança', price: '29,00 €', cat: 'portas', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400' },
+      { name: 'Dobradiças (par)', price: '6,00 €', cat: 'portas', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400' },
+      { name: 'Vedante de porta', price: '4,50 €', cat: 'portas', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400' },
+      { name: 'Cantoneira reforçada', price: '11,00 €', cat: 'serralharia', img: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400' },
+      { name: 'Fecho de portão', price: '24,00 €', cat: 'serralharia', img: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400' },
+    ];
+  }
+
+  renderVals() {
+    const num = String(this.props.whatsappNumber || '351923322717').replace(/\D/g, '');
+    const wa = 'https://wa.me/' + num;
+    const waText = (t) => wa + '?text=' + encodeURIComponent(t);
+    const fmt = (n) => Number(n).toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+    const p = this.state.page;
+    const showPrices = this.props.showPrices ?? true;
+    const showTestimonials = this.props.showTestimonials ?? true;
+    const cart = this.state.cart;
+
+    const cat = this.catalog();
+    const find = (id) => cat.find((c) => c.id === id);
+
+    const services = cat.slice(0, 6).map((s) => ({ name: s.name, price: s.priceLabel, img: s.img, onOpen: () => this.openService(s.id) }));
+    const servicesDetailed = cat.map((s) => ({ name: s.name, price: s.priceLabel, desc: s.desc, img: s.img, onOpen: () => this.openService(s.id) }));
+
+    const currentRaw = find(this.state.currentId);
+    const currentService = currentRaw ? { ...currentRaw, price: currentRaw.priceLabel, waLink: waText('Olá! Gostava de um orçamento para: ' + currentRaw.name + '.') } : { name: '', price: '', img: '', descLong: '', included: [], waLink: wa };
+    const currentInCart = !!currentRaw && cart.includes(currentRaw.id);
+
+    const cartServices = cart.map((id) => {
+      const s = find(id);
+      return {
+        id, name: s.name, price: s.priceLabel, img: s.img,
+        displayPrice: s.priceValue != null ? fmt(s.priceValue) : 'Sob avaliação',
+        onOpen: () => this.setState({ modalId: id }),
+        onRemove: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.removeFromCart(id); },
+      };
+    });
+
+    const total = cart.reduce((sum, id) => { const s = find(id); return sum + (s && s.priceValue != null ? s.priceValue : 0); }, 0);
+    const iva = total - total / 1.23;
+
+    const cartCats = Array.from(new Set(cart.map((id) => { const s = find(id); return s ? s.cat : null; }).filter(Boolean)));
+    const relatedProducts = this.products().filter((pr) => cartCats.includes(pr.cat));
+
+    const names = cartServices.map((s) => s.name).join(', ');
+    const waCartLink = waText('Olá Speedfaz! Tenho interesse nos seguintes serviços: ' + names + '. Valor estimado: ' + fmt(total) + '. Podem confirmar disponibilidade?');
+
+    const modalRaw = find(this.state.modalId);
+    const modalService = modalRaw ? { ...modalRaw, price: modalRaw.priceLabel } : { name: '', price: '', img: '', descLong: '', included: [] };
+
+    const blogPosts = [
+      { title: 'Como detectar uma torneira com vazamento — guia prático', date: '12 Mar 2025', tag: 'Canalização', img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600' },
+      { title: 'Desentupimento de canalização: quando chamar um profissional', date: '04 Abr 2025', tag: 'Canalização', img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600' },
+      { title: 'Trocar lâmpada: segurança e dicas de manutenção', date: '21 Abr 2025', tag: 'Elétrica', img: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=600' },
+      { title: 'Montagem de móveis: tudo o que precisa de saber', date: '09 Mai 2025', tag: 'Móveis', img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600' },
+      { title: 'Reparações elétricas em casa: pequenos problemas, grandes soluções', date: '27 Mai 2025', tag: 'Elétrica', img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600' },
+      { title: 'Manutenção preventiva: economize dinheiro com pequenos cuidados', date: '14 Jun 2025', tag: 'Dicas', img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600' },
+      { title: 'Portas e janelas com problemas? Soluções rápidas', date: '02 Jul 2025', tag: 'Reparações', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600' },
+      { title: 'Serralharia residencial: quando e por que chamar um especialista', date: '18 Jul 2025', tag: 'Serralharia', img: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=600' },
+    ];
+
+    const steps = [
+      { num: '01', title: 'Envia mensagem no WhatsApp', desc: 'Conta-nos o problema — uma foto ajuda. Respondemos rápido.' },
+      { num: '02', title: 'Recebe orçamento fixo e transparente', desc: 'Sabes o preço antes de começarmos. Sem surpresas, sem letra pequena.' },
+      { num: '03', title: 'O técnico resolve o teu problema', desc: 'Marcamos, aparecemos à hora e deixamos tudo a funcionar.' },
+    ];
+    const benefits = [
+      { title: 'Atendimento pessoal direto', desc: 'Sem apps, sem call centers. Falas sempre com quem vai resolver.' },
+      { title: 'Preços fixos e transparentes', desc: 'Orçamento claro antes de começar. O que combinamos é o que pagas.' },
+      { title: 'Qualquer marca ou produto', desc: 'Não estamos presos a uma loja. Trabalhamos com o que já tens em casa.' },
+    ];
+    const testimonials = [{}, {}, {}];
+
+    return {
+      page: p,
+      isHome: p === 'home', isServicos: p === 'servicos', isSobre: p === 'sobre', isBlog: p === 'blog', isContacto: p === 'contacto', isService: p === 'service', isCart: p === 'cart',
+      navHome: () => this.go('home'), navServicos: () => this.go('servicos'), navSobre: () => this.go('sobre'), navBlog: () => this.go('blog'), navContacto: () => this.go('contacto'), navCart: () => this.go('cart'),
+      wa, waOrcamento: waText('Olá! Gostava de pedir um orçamento.'),
+      emailUser: 'geral', emailAt: '@', emailDomain: 'speedfaz.com',
+      showPrices, showTestimonials,
+      services, servicesDetailed, steps, benefits, blogPosts, testimonials,
+      currentService, currentInCart, currentNotInCart: !currentInCart,
+      addCurrent: () => this.addToCart(this.state.currentId),
+      cart, cartCount: cart.length, hasCartItems: cart.length > 0, cartEmpty: cart.length === 0,
+      cartServices, relatedProducts, hasRelated: relatedProducts.length > 0,
+      totalLabel: fmt(total), ivaLabel: fmt(iva), waCartLink,
+      modalOpen: this.state.modalId != null, modalService,
+      closeModal: () => this.setState({ modalId: null }),
+      removeFromModal: () => { const id = this.state.modalId; this.setState({ modalId: null }); this.removeFromCart(id); },
+      showTotal: this.state.showTotal,
+      toggleTotal: () => this.setState((s) => ({ showTotal: !s.showTotal })),
+      stopProp: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+      relRef: (el) => { this._rel = el; },
+      scrollRelLeft: () => { if (this._rel) this._rel.scrollBy({ left: -this._rel.clientWidth, behavior: 'smooth' }); },
+      scrollRelRight: () => { if (this._rel) this._rel.scrollBy({ left: this._rel.clientWidth, behavior: 'smooth' }); },
+    };
+  }
+}
+</script>
+
+
+</body></html>
