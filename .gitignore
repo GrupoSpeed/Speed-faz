@@ -9,3 +9,6 @@ desktop.ini
 
 # Dependências (não usadas, por precaução)
 node_modules/
+
+# Pacotes de publicação (gerados)
+*.zip

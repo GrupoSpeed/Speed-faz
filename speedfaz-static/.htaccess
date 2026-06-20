@@ -1,0 +1,4 @@
+# Redireciona speedfaz.com -> www.speedfaz.com (versão canónica do site)
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^speedfaz\.com$ [NC]
+RewriteRule ^(.*)$ https://www.speedfaz.com/$1 [R=301,L]
