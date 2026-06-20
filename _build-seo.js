@@ -47,12 +47,15 @@ slugs.forEach(slug => {
   const desc = makeDesc(p);
   const titleFull = p.title + (p.subtitle ? ' — ' + p.subtitle : '') + ' | Speedfaz';
   const iso = dateISO(p.date);
+  const isAbs = /^https?:/.test(p.img);
+  const imgAbs = isAbs ? p.img : BASEURL + '/' + p.img;   // para canonical/OG/JSON-LD (URL absoluto)
+  const imgSrc = isAbs ? p.img : '../' + p.img;           // para a tag <img> (a página está em /blog/)
   const bodyHtml = p.body.map(b => /^\s*</.test(b) ? b : '<p style="font-size:17px;color:#3d3c39;margin:0 0 18px">' + b + '</p>').join('');
 
   const jsonld = {
     '@context': 'https://schema.org', '@type': 'Article',
     headline: p.title + (p.subtitle ? ' — ' + p.subtitle : ''),
-    description: desc, image: p.img,
+    description: desc, image: imgAbs,
     datePublished: iso, dateModified: iso, inLanguage: 'pt-PT',
     articleSection: p.tag,
     mainEntityOfPage: { '@type': 'WebPage', '@id': canon },
@@ -72,7 +75,7 @@ slugs.forEach(slug => {
 <meta property="og:type" content="article">
 <meta property="og:title" content="${escAttr(p.title + (p.subtitle ? ' — ' + p.subtitle : ''))}">
 <meta property="og:description" content="${escAttr(desc)}">
-<meta property="og:image" content="${escAttr(p.img)}">
+<meta property="og:image" content="${escAttr(imgAbs)}">
 <meta property="og:url" content="${canon}">
 <meta property="og:site_name" content="Speedfaz">
 <meta property="og:locale" content="pt_PT">
@@ -81,7 +84,7 @@ slugs.forEach(slug => {
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escAttr(p.title)}">
 <meta name="twitter:description" content="${escAttr(desc)}">
-<meta name="twitter:image" content="${escAttr(p.img)}">
+<meta name="twitter:image" content="${escAttr(imgAbs)}">
 <script type="application/ld+json">${JSON.stringify(jsonld)}</script>
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="stylesheet" href="../assets/css/style.css">
@@ -96,7 +99,7 @@ slugs.forEach(slug => {
     <div class="sf-eyebrow" style="margin-bottom:12px">${escAttr(p.tag)} · ${escAttr(p.date)}</div>
     <h1 style="font-weight:800;font-size:clamp(30px,4.5vw,46px);line-height:1.1;letter-spacing:-.5px;margin:0 0 12px">${p.title}</h1>
     ${p.subtitle ? `<p style="font-size:clamp(17px,2.2vw,22px);color:#727271;font-weight:600;line-height:1.3;margin:0 0 24px">${p.subtitle}</p>` : ''}
-    <img src="${escAttr(p.img)}" alt="${escAttr(p.title)}" style="width:100%;height:clamp(220px,34vw,400px);object-fit:cover;border-radius:18px;box-shadow:0 18px 40px rgba(28,27,23,.14);margin-bottom:30px">
+    <img src="${escAttr(imgSrc)}" alt="${escAttr(p.title)}" style="width:100%;height:clamp(220px,34vw,400px);object-fit:cover;border-radius:18px;box-shadow:0 18px 40px rgba(28,27,23,.14);margin-bottom:30px">
     <div>${bodyHtml}</div>
     <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;background:#f5f4f2;border:1px solid #ecebe8;border-radius:18px;padding:24px 26px">
       <div style="flex:1;min-width:220px"><div style="font-weight:800;font-size:18px;margin-bottom:4px">Precisas de ajuda com isto?</div><p style="margin:0;color:#5c5b58;font-size:15px">Fala connosco e resolvemos rápido, sem complicações.</p></div>
