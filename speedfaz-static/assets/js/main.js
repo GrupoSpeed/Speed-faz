@@ -679,7 +679,9 @@
         '</div>' +
         '<p style="color:#9a9893;font-size:14px;margin:0 0 20px">' + (isInfo ? 'A tua mensagem será enviada via WhatsApp.' : 'Introduz o teu nome para personalizarmos a mensagem no WhatsApp.') + '</p>' +
         '<label style="display:block;font-weight:700;font-size:14px;margin-bottom:6px">O teu nome <span style="color:#9a9893;font-weight:400">(opcional)</span></label>' +
-        '<input id="sf-nm-name" type="text" placeholder="Ex.: Maycon Soares" autocomplete="given-name" style="width:100%;padding:12px 14px;border:1px solid #ecebe8;border-radius:10px;font:inherit;font-size:15px;margin-bottom:20px">' +
+        '<input id="sf-nm-name" type="text" placeholder="Ex.: Maycon Soares" autocomplete="given-name" style="width:100%;padding:12px 14px;border:1px solid #ecebe8;border-radius:10px;font:inherit;font-size:15px;margin-bottom:14px">' +
+        '<label style="display:block;font-weight:700;font-size:14px;margin-bottom:6px">Morada <span style="color:#9a9893;font-weight:400">(opcional)</span></label>' +
+        '<input id="sf-nm-morada" type="text" placeholder="Ex.: Rua das Flores, 12, Setúbal" autocomplete="street-address" style="width:100%;padding:12px 14px;border:1px solid #ecebe8;border-radius:10px;font:inherit;font-size:15px;margin-bottom:20px">' +
         '<button id="sf-nm-send" class="sf-btn sf-btn-green" style="display:flex;width:100%;padding:15px 18px;font-size:16px">' + WA_SVG + ' Enviar no WhatsApp</button>' +
         '<p style="text-align:center;color:#9a9893;font-size:13px;margin:12px 0 0">A mensagem será sempre enviada em português.</p>' +
       '</div>';
@@ -688,10 +690,13 @@
     modal.querySelector('[data-close]').addEventListener('click', close);
     modal.querySelector('#sf-nm-send').addEventListener('click', function() {
       var name = (modal.querySelector('#sf-nm-name').value || '').trim();
+      var morada = (modal.querySelector('#sf-nm-morada').value || '').trim();
       var saudacao = name ? 'Olá, o meu nome é ' + name + '.' : 'Olá!';
       var msg;
       if (isInfo) {
-        msg = saudacao + ' Estava a ver o site da SPEED-FAZ e gostaria de obter informação geral sobre os vossos serviços. Podem entrar em contacto o mais breve possível? Obrigado!';
+        msg = saudacao + ' Estava a ver o site da SPEED-FAZ e gostaria de obter informação geral sobre os vossos serviços.' +
+          (morada ? ' Morada: ' + morada + '.' : '') +
+          ' Podem entrar em contacto o mais breve possível? Obrigado!';
       } else {
         var cart = getCart();
         var names = cart.map(function(id) { var s = find(id); return s ? s.name : ''; }).filter(Boolean).join(', ');
@@ -699,6 +704,7 @@
         msg = saudacao + ' Estava a ver o site da SPEED-FAZ e gostaria de marcar uma visita.' +
           (names ? ' Serviços de interesse: ' + names + '.' : '') +
           (total > 0 ? ' Valor estimado: ' + fmt(total) + '.' : '') +
+          (morada ? ' Morada: ' + morada + '.' : '') +
           ' Podem ver a disponibilidade dos serviços e também o valor da visita, por favor? Entrem em contacto o mais breve possível. Obrigado!';
       }
       window.open(waText(msg), '_blank', 'noopener');
