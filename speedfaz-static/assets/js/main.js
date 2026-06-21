@@ -288,7 +288,33 @@
       svc_serralharia_p:'Repairs and installation of residential metal structures.',
       svc_manutencao_p:'General maintenance visit to prevent future problems.',
       ver_detalhes:'See details →',
-      svc_eyebrow_svc:'Services', agende_svc_title:'Schedule your visit', agende_svc_desc:'Includes travel and diagnosis. See how it works →'
+      svc_eyebrow_svc:'Services', agende_svc_title:'Schedule your visit', agende_svc_desc:'Includes travel and diagnosis. See how it works →',
+      blog_h1:'Tips and practical guides', blog_p:'Small habits that save money and avoid headaches at home.',
+      sobre_eyebrow:'About us', sobre_h1:'Trusted residential repairs',
+      missao_h:'Mission', missao_p:'Solve household problems quickly, professionally and without middlemen. Your comfort is our priority.',
+      visao_h:'Vision', visao_p:'To be the local reference for small residential repairs, recognised for quality and honesty.',
+      valores_h:'Values', valores_p:'Honesty · Quality · Speed · Fair price. What we agree is what we deliver.',
+      porque_h2:'Why choose Speedfaz', sobre_wa_btn:'Get a WhatsApp quote',
+      visita_eyebrow:'Booking', visita_h1:'Book your visit now',
+      visita_p:'Booking is simple and commitment-free. We come to your home, assess the problem and give you a clear quote before any work.',
+      visita_como_h2:'How it works',
+      passo1_h:'Contact us', passo1_p:'Call or message on WhatsApp describing the problem — a photo helps.',
+      passo2_h:'We schedule the visit', passo2_p:'We set the day and time that suits you, within our South Bank coverage area.',
+      passo3_h:'Assessment and quote', passo3_p:'On site, we diagnose and tell you the price. You decide with everything clear in front of you.',
+      visita_incluido_h:'What is included in the visit',
+      incl_1:'Travel to your address (South Bank)', incl_2:'Problem diagnosis by a technician',
+      incl_3:'Clear, commitment-free quote', incl_4:'All your questions answered',
+      visita_cond_h:'Conditions',
+      cond1_h:'No fixed price', cond1_p:'The visit fee is agreed with you depending on the case, before we schedule.',
+      cond2_h:'Deducted from the service', cond2_p:'If you authorise the work on the spot, the visit fee is deducted from the total.',
+      cond3_h:'Coverage area', cond3_p:'South Bank. For locations outside this area, talk to us to confirm.',
+      cond4_h:'No commitment', cond4_p:'You only proceed with the service if you want to. The quote is yours to decide.',
+      visita_cta_h:'Ready to fix it?', visita_cta_p:'Book your visit in minutes. We respond fast.',
+      visita_wa_btn:'Schedule on WhatsApp',
+      contacto_eyebrow:'Contact', contacto_h1:'Getting in touch is simple',
+      contacto_p:'No apps, no long forms. Call, send a message or come to the shop.',
+      tel_label:'Phone numbers', morada_label:'Address', email_label:'Email', online_label:'Online',
+      zona_label:'Coverage area: South Bank'
     },
     fr: {
       nav_inicio:'Accueil', nav_servicos:'Services', nav_sobre:'À propos', nav_blog:'Blog', nav_contacto:'Contact',
@@ -374,7 +400,33 @@
       svc_serralharia_p:'Réparations et installation de structures métalliques résidentielles.',
       svc_manutencao_p:'Visite de maintenance générale pour éviter les problèmes futurs.',
       ver_detalhes:'Voir les détails →',
-      svc_eyebrow_svc:'Services', agende_svc_title:'Planifiez votre visite', agende_svc_desc:'Inclut le déplacement et le diagnostic. Voir comment ça marche →'
+      svc_eyebrow_svc:'Services', agende_svc_title:'Planifiez votre visite', agende_svc_desc:'Inclut le déplacement et le diagnostic. Voir comment ça marche →',
+      blog_h1:'Conseils et guides pratiques', blog_p:'De petites habitudes qui font économiser de l\'argent et évitent les maux de tête à la maison.',
+      sobre_eyebrow:'À propos', sobre_h1:'Réparations résidentielles de confiance',
+      missao_h:'Mission', missao_p:'Résoudre les problèmes domestiques rapidement, professionnellement et sans intermédiaires. Votre confort est notre priorité.',
+      visao_h:'Vision', visao_p:'Être la référence locale pour les petites réparations résidentielles, reconnue pour la qualité et l\'honnêteté.',
+      valores_h:'Valeurs', valores_p:'Honnêteté · Qualité · Rapidité · Prix juste. Ce que nous convenons, c\'est ce que nous livrons.',
+      porque_h2:'Pourquoi choisir Speedfaz', sobre_wa_btn:'Obtenir un devis sur WhatsApp',
+      visita_eyebrow:'Réservation', visita_h1:'Réservez votre visite maintenant',
+      visita_p:'Réserver est simple et sans engagement. Nous venons chez vous, évaluons le problème et vous donnons un devis clair avant tout travail.',
+      visita_como_h2:'Comment ça fonctionne',
+      passo1_h:'Contactez-nous', passo1_p:'Appelez ou envoyez un message sur WhatsApp en décrivant le problème — une photo aide.',
+      passo2_h:'Nous planifions la visite', passo2_p:'Nous fixons le jour et l\'heure qui vous conviennent, dans notre zone de couverture sur la Rive Sud.',
+      passo3_h:'Évaluation et devis', passo3_p:'Sur place, nous diagnostiquons et vous donnons le prix. Vous décidez avec tout clair devant vous.',
+      visita_incluido_h:'Ce qui est inclus dans la visite',
+      incl_1:'Déplacement à votre adresse (Rive Sud)', incl_2:'Diagnostic du problème par un technicien',
+      incl_3:'Devis clair et sans engagement', incl_4:'Toutes vos questions répondues',
+      visita_cond_h:'Conditions',
+      cond1_h:'Sans prix fixe', cond1_p:'Le coût de la visite est convenu avec vous selon le cas, avant de planifier.',
+      cond2_h:'Déduit du service', cond2_p:'Si vous autorisez le travail sur place, le coût de la visite est déduit du total.',
+      cond3_h:'Zone de couverture', cond3_p:'Rive Sud. Pour les localités en dehors de cette zone, parlez-nous pour confirmer.',
+      cond4_h:'Sans engagement', cond4_p:'Vous n\'avancez avec le service que si vous le souhaitez. Le devis est à vous pour décider.',
+      visita_cta_h:'Prêt à résoudre ?', visita_cta_p:'Réservez votre visite en quelques minutes. Nous répondons vite.',
+      visita_wa_btn:'Planifier sur WhatsApp',
+      contacto_eyebrow:'Contact', contacto_h1:'Nous contacter est simple',
+      contacto_p:'Sans applis, sans longs formulaires. Appelez, envoyez un message ou passez à la boutique.',
+      tel_label:'Téléphones', morada_label:'Adresse', email_label:'Email', online_label:'En ligne',
+      zona_label:'Zone de couverture : Rive Sud'
     }
   };
 
@@ -382,6 +434,24 @@
     if (LANG === 'pt') return ptDefault;
     var trans = T[LANG];
     return (trans && trans[key] !== undefined) ? trans[key] : ptDefault;
+  }
+
+  function renderBlog() {
+    var root = document.getElementById('sf-blog-root'); if (!root) return;
+    var slugs = Object.keys(BLOG);
+    var html = slugs.map(function(slug) {
+      var post = BLOG[slug]; var pd = post[LANG] || post.pt;
+      var title = pd.title + (pd.subtitle ? ' — ' + pd.subtitle : '');
+      return '<a class="sf-card clickable" href="' + esc(BASE+'blog/'+slug+'.html') + '" style="text-decoration:none;color:inherit;display:block">' +
+        '<div style="position:relative;height:184px;overflow:hidden">' +
+          '<img src="' + esc(post.img) + '" alt="' + esc(title) + '" loading="lazy" style="width:100%;height:100%;object-fit:cover">' +
+          '<span style="position:absolute;top:13px;left:13px;background:rgba(28,27,23,.85);color:#fff;font-weight:600;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:5px 10px;border-radius:999px">' + esc(pd.tag) + '</span>' +
+        '</div>' +
+        '<div style="padding:20px 22px 24px"><div style="color:#9a9893;font-size:13px;font-weight:600;margin-bottom:8px">' + esc(pd.date) + '</div>' +
+        '<h3 style="font-weight:700;font-size:18px;line-height:1.3;margin:0">' + esc(title) + '</h3></div>' +
+      '</a>';
+    }).join('');
+    root.innerHTML = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:26px">' + html + '</div>';
   }
 
   function setLang(lang) {
@@ -394,6 +464,7 @@
     renderTestimonials();
     renderCartPage();
     renderArticle();
+    renderBlog();
   }
 
   function translatePage() {
@@ -914,6 +985,7 @@
     updateBadges();
     translatePage();
     renderArticle();
+    renderBlog();
     renderTestimonials();
 
     document.querySelectorAll('[data-service]').forEach(function(c){
