@@ -1,6 +1,6 @@
 /* ============================================================
    Speedfaz — folha de estilos partilhada
-   Reparações residenciais · Setúbal e Tróia
+   Reparações residenciais · Margem Sul
    ============================================================ */
 
 /* ---------- Fontes ---------- */
@@ -134,5 +134,15 @@ a.sf-fee:hover{ border-color:var(--orange); box-shadow:0 10px 26px rgba(240,129,
 .sf-cart-remove:hover{ border-color:var(--red); color:var(--red); }
 .sf-arrow-btn{ cursor:pointer; width:38px; height:38px; border-radius:10px; border:1px solid var(--line); background:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--ink); transition:border-color .15s; }
 .sf-arrow-btn:hover{ border-color:var(--orange); }
+
+/* ---------- Seletor de língua (PT | EN | FR) ---------- */
+.sf-lang{ display:flex; align-items:center; gap:2px; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:3px; }
+.sf-lang-btn{ border:none; background:transparent; font-weight:700; font-size:12px; padding:5px 9px; border-radius:999px; cursor:pointer; color:var(--muted); transition:background .15s,color .15s; }
+.sf-lang-btn.active{ background:#fff; color:var(--ink); box-shadow:0 1px 4px rgba(28,27,23,.12); }
+.sf-lang-btn:hover:not(.active){ color:var(--ink); }
+@media (max-width:760px){
+  .sf-lang{ order:10; margin-left:auto; }
+  .sf-lang-btn{ font-size:11px; padding:4px 7px; }
+}
 
 [hidden]{ display:none !important; }
